@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login | CodTech</title>
+  <link rel="stylesheet" href="auth.css" />
+</head>
+<body>
+
+  <div class="auth-container">
+    <h2>Login to CodTech Academy</h2>
+    <input type="email" id="email" placeholder="Email" />
+    <input type="password" id="password" placeholder="Password" />
+    <button id="loginBtn">Login</button>
+    <p>Don't have an account? <a href="#" id="showSignup">Sign Up</a></p>
+    <div id="signup" style="display: none;">
+        <h4>Sign Up</h4>
+        <input type="email" id="signupEmail" placeholder="Email" />
+        <input type="password" id="signupPassword" placeholder="Password" />
+        <button id="signupBtn">Sign Up</button>
+      <p id="auth-message"></p>
+  </div>
+
+  <!--  Firebase SDKs -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDLw8ocXXimedy3cl1pZatQ-tJTa7J55uc",
+      authDomain: "codtech-learning-platform.firebaseapp.com",
+      projectId: "codtech-learning-platform",
+      storageBucket: "codtech-learning-platform.appspot.com",
+      messagingSenderId: "355836884899",
+      appId: "1:355836884899:web:b6b7e6247328496399cc16",
+    };
+
+    //  Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    // Signup Function
+    document.getElementById("signupBtn").addEventListener("click", () => {
+      const email = document.getElementById("signupEmail").value;
+      const password = document.getElementById("signupPassword").value;
+
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          document.getElementById("auth-message").innerText = "Signup successful! Please log in.";
+          document.getElementById("signup").style.display = "none";
+        })
+        .catch((error) => {
+          document.getElementById("auth-message").innerText = error.message;
+        });
+    });
+
+    //  Login Function
+    document.getElementById("loginBtn").addEventListener("click", () => {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          document.getElementById("auth-message").innerText = "Login successful!";
+          window.location.href = "dashboard.html"; // redirect on login
+        })
+        .catch((error) => {
+          document.getElementById("auth-message").innerText = error.message;
+        });
+    });
+
+    //  Toggle Signup
+    document.getElementById("showSignup").addEventListener("click", () => {
+      document.getElementById("signup").style.display = "block";
+    });
+  </script>
+</body>
+</html>

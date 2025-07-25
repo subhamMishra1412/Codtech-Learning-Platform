@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Course | CodTech</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="navbar">
+    <h1>CodTech Academy</h1>
+    <nav>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="index.html">Home</a>
+    </nav>
+  </header>
+
+  <main class="course-page">
+    <section class="video-section">
+      <h2>Lesson 1: Introduction to Web Development</h2>
+      <video controls width="100%" height="auto">
+        <source src="videos/lesson1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </section>
+
+    <section class="quiz-section">
+      <h3>Quick Quiz</h3>
+      <form id="quiz-form">
+        <label>1. What does HTML stand for?</label><br>
+        <input type="radio" name="q1" value="a" /> a) HighText Machine Language<br>
+        <input type="radio" name="q1" value="b" /> b) HyperText Markup Language<br>
+        <input type="radio" name="q1" value="c" /> c) HyperTool Multi Language<br><br>
+
+        <label>2. Which tag is used for inserting an image?</label><br>
+        <input type="radio" name="q2" value="a" /> a) `<img>`<br>
+        <input type="radio" name="q2" value="b" /> b) `<image>`<br>
+        <input type="radio" name="q2" value="c" /> c) `<pic>`<br><br>
+
+        <button type="submit">Submit Quiz</button>
+      </form>
+      <p id="quiz-result"></p>
+    </section>
+
+    <section class="frontend-projects">
+  <h2 class="section-title">Frontend Projects</h2>
+  <ol>
+    <li class="frontend-title">CSS Gallery Website</li>
+    <ul class="frontend-description">
+      <li>A minimal photo gallery built with only HTML & CSS.</li>
+      <li>Used Flexbox, Grid, and hover effects for responsiveness.</li>
+      <li>Lightweight, mobile-first design.</li>
+    </ul>
+
+    <li class="frontend-title">Landing Page for a Product</li>
+    <ul class="frontend-description">
+      <li>Built using HTML, CSS, and basic JavaScript.</li>
+      <li>Smooth scroll navigation and interactive CTAs.</li>
+      <li>Polished UI using modern fonts, gradients, and transitions.</li>
+    </ul>
+  </ol>
+</section>
+
+  </main>
+
+  <script>
+  document.getElementById("quiz-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    let score = 0;
+    if (document.querySelector('input[name="q1"]:checked')?.value === "b") score++;
+    if (document.querySelector('input[name="q2"]:checked')?.value === "a") score++;
+
+    document.getElementById("quiz-result").innerText = `You scored ${score}/2!`;
+
+    if (score === 2) {
+      localStorage.setItem('lesson1_completed', 'true');
+    }
+  });
+  </script>
+</body>
+</html>

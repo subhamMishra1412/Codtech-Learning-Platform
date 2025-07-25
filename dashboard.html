@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard | CodTech</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="navbar">
+    <h1>Welcome to Your Dashboard</h1>
+    <nav>
+      <a href="lesson1.html">Lesson 1</a>
+      <a href="lesson2.html">Lesson 2</a>
+      <a href="index.html">Home</a>
+    </nav>
+  </header>
+
+  <main class="dashboard">
+    <h2>Your Progress</h2>
+    <ul>
+      <li id="lesson1-status">Lesson 1: Not Started ❌</li>
+      <li id="lesson2-status">Lesson 2: Not Started ❌</li>
+    </ul>
+
+    <h3>Continue Learning</h3>
+    <a href="lesson1.html">Go to Lesson 1</a><br>
+    <a href="lesson2.html">Go to Lesson 2</a>
+
+    <div id="certificate-section" style="display:none; margin-top: 30px;">
+      <h3>🎉 Congrats, you've completed all lessons!</h3>
+      <button id="downloadCertBtn">Download Certificate</button>
+    </div>
+  </main>
+
+  <!-- html2pdf.js for certificate generation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+  <script>
+    // Update progress status from localStorage
+    if (localStorage.getItem('lesson1_completed') === 'true') {
+      document.getElementById("lesson1-status").innerText = "Lesson 1: Completed ✅";
+    }
+    if (localStorage.getItem('lesson2_completed') === 'true') {
+      document.getElementById("lesson2-status").innerText = "Lesson 2: Completed ✅";
+    }
+
+    // Show certificate button if both lessons are completed
+    const l1 = localStorage.getItem('lesson1_completed') === 'true';
+    const l2 = localStorage.getItem('lesson2_completed') === 'true';
+    if (l1 && l2) {
+      document.getElementById('certificate-section').style.display = 'block';
+    }
+
+    // Certificate download handler
+    document.getElementById("downloadCertBtn")?.addEventListener("click", () => {
+      const certElement = document.createElement("div");
+      certElement.style.padding = "30px";
+      certElement.innerHTML = `
+        <h1 style="text-align:center;">Certificate of Completion</h1>
+        <p style="text-align:center; font-size:18px;">This is to certify that</p>
+        <h2 style="text-align:center;">Subham Mishra</h2>
+        <p style="text-align:center;">has successfully completed the online course on</p>
+        <h3 style="text-align:center;">Web Development Basics</h3>
+        <p style="text-align:center;">Date: ${new Date().toLocaleDateString()}</p>
+        <p style="text-align:center;">Presented by <strong>CodTech Academy</strong></p>
+      `;
+      html2pdf().from(certElement).save("CodTech-Certificate.pdf");
+    });
+  </script>
+
+</body>
+</html>

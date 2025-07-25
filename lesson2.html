@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Course | CodTech</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="navbar">
+    <h1>CodTech Academy</h1>
+    <nav>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="index.html">Home</a>
+    </nav>
+  </header>
+
+  <main class="course-page">
+    <section class="video-section">
+        <form id="quiz-form">
+      <h2>Lesson 2: Introduction to CSS</h2>
+      <video controls width="100%" height="auto">
+        <source src="videos/lesson2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </section>
+    <section class="quiz-section">
+      <h3>Quick Quiz</h3>
+      <form id="quiz-form">
+
+    <label>1. Which property is used to change text color in CSS?</label><br>
+<input type="radio" name="q1" value="a" /> a) text-color<br>
+<input type="radio" name="q1" value="b" /> b) color<br>
+<input type="radio" name="q1" value="c" /> c) font-color<br><br>
+
+<label>2. How do you center a div using CSS Flexbox?</label><br>
+<input type="radio" name="q2" value="a" /> a) align: center<br>
+<input type="radio" name="q2" value="b" /> b) justify-content: center<br>
+<input type="radio" name="q2" value="c" /> c) position: center<br><br>
+<button type="submit">Submit Quiz</button>
+</form>
+<p id="quiz-result"></p>
+    </section>
+
+
+  </main>
+
+  <script>
+  document.getElementById("quiz-form").addEventListener("submit", function (e) {
+  e.preventDefault();
+  let score = 0;
+  if (document.querySelector('input[name="q1"]:checked')?.value === "b") score++;
+  if (document.querySelector('input[name="q2"]:checked')?.value === "b") score++;
+
+  document.getElementById("quiz-result").innerText = `You scored ${score}/2!`;
+
+  if (score === 2) {
+    localStorage.setItem('lesson2_completed', 'true');
+  }
+});
+  </script>
+</body>
+</html>

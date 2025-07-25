@@ -1,0 +1,127 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f5f5f5;
+  color: #333;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  background: #222;
+  color: white;
+  padding: 15px 30px;
+}
+
+.navbar a {
+  color: white;
+  margin-left: 15px;
+  text-decoration: none;
+}
+
+.hero {
+  padding: 50px;
+  background: #fff;
+  text-align: center;
+}
+
+.courses {
+  padding: 30px;
+}
+
+.course-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.course-card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  flex: 1 1 300px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.course-page {
+  padding: 30px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.video-section video {
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+
+.quiz-section {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.quiz-section h3 {
+  margin-top: 0;
+}
+
+.quiz-section button {
+  margin-top: 15px;
+  background: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.dashboard {
+  padding: 30px;
+  max-width: 700px;
+  margin: auto;
+}
+
+.dashboard ul {
+  list-style: none;
+  padding: 0;
+  font-size: 18px;
+}
+
+.dashboard li {
+  margin-bottom: 15px;
+}
+.quiz-section button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.quiz-section button:hover {
+  background-color: #0056b3;
+}
+.frontend-projects {
+  background-color: #f2f9ff;
+  padding: 40px 20px;
+  border-radius: 12px;
+  margin-top: 40px;
+}
+
+.frontend-projects .section-title {
+  color: #007bff;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.frontend-projects li {
+  margin-bottom: 10px;
+}
+
+
+
+
+
